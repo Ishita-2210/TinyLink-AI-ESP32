@@ -1,8 +1,18 @@
 # TinyLink AI — ESP32 Wi-Fi Quality Classification
 
+[GitHub repository](https://github.com/Ishita-2210/TinyLink-AI-ESP32) · [CI runs](https://github.com/Ishita-2210/TinyLink-AI-ESP32/actions)
+
 An embedded C++/TinyML project that measures a local Wi-Fi connection and classifies its current condition as **Stable**, **Degrading**, or **Unstable**. The ESP32 collects RSSI, performs low-rate UDP echo probes to a Windows laptop, extracts a sliding feature window, executes an exported decision tree locally, and emits versioned JSON Lines over USB serial. No cloud inference, sensors, display, GPU, paid service or second board is required.
 
 **Validation status:** firmware cross-build succeeds; **65 automated tests pass**; **9,071 Python/C++ vectors agree**. A deterministic synthetic demonstration runs end to end. **No physical ESP32 was connected or flashed.** The supplied model approximates an explicit current-window quality policy using synthetic data; it is not a validated future-outage predictor. See [actual results and limitations](docs/results.md).
+
+## Frontend preview
+
+The desktop monitor displays recorded or live firmware telemetry, including RSSI, latency, quality predictions and connection events. This screenshot uses the labeled **synthetic C++ demonstration**, with no physical ESP32 measurements:
+
+![TinyLink AI desktop monitor showing synthetic RSSI, latency and quality events](docs/assets/monitor.png)
+
+To open it, run `python -m scripts.demo --output-dir build/preview-demo`, then `python -m host.monitor --input build/preview-demo/session.jsonl`. Live serial mode is documented below.
 
 ## Architecture
 
@@ -127,7 +137,7 @@ To change the schema, edit its JSON, run `python scripts/generate_schema.py`, re
 python -m scripts.verify --firmware
 ```
 
-This saves actual test/build logs and `build/verification.json`. Checks include schema validation, labels, dataset loading, session splits, deterministic training, metrics, safe JSON model loading, portable C++ features/state/configuration/serialization, Python/C++ equivalence, serial fragmentation/noise/oversize/recovery, collector/export, plotting, and actual host UDP echo sockets. [CI](.github/workflows/ci.yml) defines Windows/Ubuntu software checks plus a hardware-free Ubuntu ESP32 cross-build; **hosted CI has not run** because the project has no published remote.
+This saves actual test/build logs and `build/verification.json`. Checks include schema validation, labels, dataset loading, session splits, deterministic training, metrics, safe JSON model loading, portable C++ features/state/configuration/serialization, Python/C++ equivalence, serial fragmentation/noise/oversize/recovery, collector/export, plotting, and actual host UDP echo sockets. [CI](.github/workflows/ci.yml) defines Windows/Ubuntu software checks plus a hardware-free Ubuntu ESP32 cross-build; current hosted results and logs are available in [GitHub Actions](https://github.com/Ishita-2210/TinyLink-AI-ESP32/actions).
 
 Measured on 27 October 2026:
 
@@ -170,6 +180,6 @@ docs/               Contract, environment audit, results and physical validation
 - **Missing native compiler:** install the development lock on Windows (includes Zig); on Linux install g++. First-run Zig system-library compilation is slower than subsequent builds.
 - **Model limitations:** synthetic policy approximation, no real training/validation, no throughput/PHY interference measurement, AP/endpoint/laptop effects are conflated, and stress accuracy is lower. Ten-slot smoothing adds response lag. This is a student engineering demonstrator, not a safety-critical network controller.
 
-Follow [physical validation](docs/hardware-validation.md) before publishing device-performance claims. [Environment audit](docs/environment.md) records what was found. [Publication preparation](docs/github.md) contains the repository description/topics; no public repository, demo URL or CI badge is invented.
+Follow [physical validation](docs/hardware-validation.md) before publishing device-performance claims. [Environment audit](docs/environment.md) records what was found. [Repository details](docs/github.md) contains the published repository description/topics. The frontend runs locally; no hosted live device demo is claimed.
 
 Primary API references: [PlatformIO ESP32 platform](https://docs.platformio.org/en/latest/platforms/espressif32.html), [ESP32 Dev Module target](https://docs.platformio.org/en/latest/boards/espressif32/esp32dev.html), [Espressif Wi-Fi API](https://docs.espressif.com/projects/arduino-esp32/en/latest/api/wifi.html). Exact API availability was also verified against the installed pinned Arduino framework and a successful cross-build.

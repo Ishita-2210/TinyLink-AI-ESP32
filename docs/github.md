@@ -1,11 +1,13 @@
-# Publication preparation
+# GitHub repository
 
 Repository name: `TinyLink-AI-ESP32`
 
+Public repository: [Ishita-2210/TinyLink-AI-ESP32](https://github.com/Ishita-2210/TinyLink-AI-ESP32).
+
 Description: **ESP32 Wi-Fi quality classification with local decision-tree inference, LAN UDP probes, serial telemetry, reproducible ML evaluation and portable C++ tests.**
 
-Suggested topics: `esp32`, `embedded-cpp`, `tinyml`, `wifi`, `edge-ai`, `platformio`, `decision-tree`, `iot`, `python`, `firmware`.
+Configured topics: `esp32`, `embedded-cpp`, `tinyml`, `wifi`, `edge-ai`, `platformio`, `decision-tree`, `iot`, `python`, `firmware`.
 
-The project has a local Git repository using the user's configured identity. No public remote is assumed or invented. `.github/workflows/ci.yml` runs Python/native C++ tests and a synthetic demo on Windows and Ubuntu, and cross-builds the ESP32 firmware on Ubuntu without hardware or credentials. Local checks were executed; hosted CI is **not yet run**. No unearned passing-status badge is included.
+The standalone project uses the user's configured Git identity and its own `origin` remote. `.github/workflows/ci.yml` runs Python/native C++ tests and a synthetic demo on Windows and Ubuntu, and cross-builds the ESP32 firmware on Ubuntu without hardware or credentials. Actual hosted status is available in [Actions](https://github.com/Ishita-2210/TinyLink-AI-ESP32/actions); local test results are recorded separately. No unearned passing-status badge is included.
 
-When publishing this prepared repository, create an empty GitHub repository with the name/description above, set the topics, then add its actual remote and push the ordinary local branch. Do not force-push or reuse the parent image-analysis remote. Only add a portfolio source link after that repository exists; there is no public device/demo URL to advertise. The local portfolio is outside the active authorized workspace and was left untouched.
+The README includes a screenshot of the local desktop frontend using explicitly labeled synthetic telemetry. Run the documented monitor command to open its interactive window. There is no hosted live device demo. The independent image-analysis repository and the local portfolio were left untouched.

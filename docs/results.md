@@ -28,4 +28,4 @@ These results measure **current-window policy approximation on deterministic sim
 
 No physical ESP32 was connected, identified or flashed. Device inference/extraction latency, heap/stack, actual serial reliability, AP disconnect/reconnect latency and real classification metrics are **pending**. Timer instrumentation and a provenance-checked timing summary tool are implemented for later collection. [Hardware procedure](hardware-validation.md) gives exact remaining steps.
 
-The GitHub Actions workflow is prepared but has **not executed on GitHub**. Local success is not a hosted CI badge. No remote repository or portfolio/demo URL is invented.
+The repository and workflow are published at [Ishita-2210/TinyLink-AI-ESP32](https://github.com/Ishita-2210/TinyLink-AI-ESP32). See [Actions](https://github.com/Ishita-2210/TinyLink-AI-ESP32/actions) for actual hosted runs; the measurements above describe local Windows validation. The desktop frontend screenshot uses synthetic telemetry, and no hosted live device demo is claimed.
