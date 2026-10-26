@@ -1,6 +1,6 @@
 # Environment audit — 27 October 2026
 
-- Active workspace: `D:\image-entropy-analyzer`, an existing independent React/FastAPI image-analysis project. Its modified presentation was preserved. TinyLink lives in `TinyLink-AI-ESP32/` with a separate local repository. No existing implementation was overwritten.
+- Project location: `D:\TinyLink-AI-ESP32`, a standalone project with its own Git repository. The initial audit ran from the independent `D:\image-entropy-analyzer` workspace; that project and its modified presentation were preserved. TinyLink was moved to this separate top-level folder at the user's request.
 - Python 3.13.3 and Git available. Existing parent `.venv` was not changed. Created TinyLink's own `.venv` and pinned dependencies; `requirements-lock.txt` records the tested transitive environment.
 - `idf.py`, `IDF_PATH`, Arduino CLI, PlatformIO CLI and native C++ compilers were not on PATH. No complete usable ESP-IDF framework was found. Existing `D:\ArduinoIDE` and cached PlatformIO packages were found. The neighboring SentinelAI firmware uses the same cached PlatformIO `espressif32@8.0.0` Arduino path; its unrelated implementation was not copied.
 - Reused cached ESP32 platform 8.0.0, Arduino core 3.3.12, Xtensa GCC 14.2.0+20260121. Installed isolated PlatformIO Core 6.1.18 and Zig 0.14.1 as the native host C++ compiler (Linux CI uses g++). One primary firmware build path; no ESP-IDF or competing Arduino toolchain installed.

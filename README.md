@@ -31,6 +31,7 @@ The seven-feature schema lives in [schema/features.json](schema/features.json). 
 From this project directory in PowerShell:
 
 ```powershell
+cd D:\TinyLink-AI-ESP32
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -r requirements-lock.txt
 .\.venv\Scripts\Activate.ps1
