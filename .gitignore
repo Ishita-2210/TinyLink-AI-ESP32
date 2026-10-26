@@ -1,0 +1,13 @@
+.venv/
+.pio/
+__pycache__/
+.pytest_cache/
+*.egg-info/
+build/
+data/sessions/
+data/generated/
+firmware/include/secrets.h
+.env
+*.bin
+*.elf
+*.map

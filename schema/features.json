@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "protocol_version": 1,
+  "sample_interval_ms": 1000,
+  "probe_timeout_ms": 500,
+  "window_samples": 10,
+  "max_sample_age_ms": 1750,
+  "labels": ["Stable", "Degrading", "Unstable"],
+  "features": [
+    {"name": "rssi_mean_dbm", "unit": "dBm", "min": -100, "max": 0, "missing": -127, "calculation": "Mean of connected RSSI samples in the last ten slots; null if none."},
+    {"name": "rtt_mean_ms", "unit": "ms", "min": 0, "max": 500, "missing": 1000, "calculation": "Mean of successful nonce-matched UDP echo RTTs in the window; null if none."},
+    {"name": "rtt_std_ms", "unit": "ms", "min": 0, "max": 500, "missing": 500, "calculation": "Population standard deviation of successful RTTs; zero for one, null for none."},
+    {"name": "probe_failure_rate", "unit": "fraction", "min": 0, "max": 1, "missing": null, "calculation": "Failed or disconnected slots divided by all ten slots. Endpoint reachability, not network-wide packet loss."},
+    {"name": "disconnect_count", "unit": "events/window", "min": 0, "max": 65535, "missing": null, "calculation": "Observed station disconnect events in the window, saturated at 65535."},
+    {"name": "success_age_ms", "unit": "ms", "min": 0, "max": 60000, "missing": 60000, "calculation": "Age since last successful echo, capped at 60000; null before any success."},
+    {"name": "connection_uptime_s", "unit": "s", "min": 0, "max": 86400, "missing": null, "calculation": "Current continuous IP connection uptime, capped at one day; zero when disconnected."}
+  ]
+}

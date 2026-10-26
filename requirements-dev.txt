@@ -1,0 +1,4 @@
+-r requirements.txt
+pytest==8.3.5
+platformio==6.1.18
+ziglang==0.14.1; sys_platform == 'win32'

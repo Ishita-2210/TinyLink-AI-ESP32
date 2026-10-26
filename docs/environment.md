@@ -1,0 +1,11 @@
+# Environment audit — 27 October 2026
+
+- Active workspace: `D:\image-entropy-analyzer`, an existing independent React/FastAPI image-analysis project. Its modified presentation was preserved. TinyLink lives in `TinyLink-AI-ESP32/` with a separate local repository. No existing implementation was overwritten.
+- Python 3.13.3 and Git available. Existing parent `.venv` was not changed. Created TinyLink's own `.venv` and pinned dependencies; `requirements-lock.txt` records the tested transitive environment.
+- `idf.py`, `IDF_PATH`, Arduino CLI, PlatformIO CLI and native C++ compilers were not on PATH. No complete usable ESP-IDF framework was found. Existing `D:\ArduinoIDE` and cached PlatformIO packages were found. The neighboring SentinelAI firmware uses the same cached PlatformIO `espressif32@8.0.0` Arduino path; its unrelated implementation was not copied.
+- Reused cached ESP32 platform 8.0.0, Arduino core 3.3.12, Xtensa GCC 14.2.0+20260121. Installed isolated PlatformIO Core 6.1.18 and Zig 0.14.1 as the native host C++ compiler (Linux CI uses g++). One primary firmware build path; no ESP-IDF or competing Arduino toolchain installed.
+- Windows PnP enumeration found COM3 through COM8 as Bluetooth serial links, and no USB ESP32 bridge/board. No board/chip was physically identified; `esp32dev` is an explicit build target for a classic ESP32 DevKit, **not** a detected board. No serial port was opened and no board flashed.
+- Read the public GitHub repository list for `Ishita-2210`, then checked authenticated owned repositories using the existing Git credential helper without displaying or storing credentials. No existing TinyLink repository found. Inspected local `D:\Portfolio` and its `Portfolio_Ishita` remote; it lies outside the active workspace, so no portfolio edits were made.
+- The configured Git identity is used for ordinary local commits. No credentials were displayed. Publication and hosted CI execution are separate from this local validation. No paid services are used.
+
+An ESP32 USB data connection is the only blocker to physical validation. Inference latency, feature extraction latency, actual reconnection timing, runtime heap and real-world classification performance remain pending. The successful cross-build and host tests do not establish those measurements.

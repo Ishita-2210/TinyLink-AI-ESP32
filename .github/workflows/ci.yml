@@ -1,0 +1,33 @@
+name: software-and-firmware
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  software:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -r requirements-lock.txt
+      - run: python scripts/generate_schema.py --check
+      - run: python -m pytest -ra
+      - run: python -m scripts.demo --output-dir build/ci-demo
+      - uses: actions/upload-artifact@v4
+        with:
+          name: synthetic-demo-${{ matrix.os }}
+          path: build/ci-demo/
+  firmware:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install platformio==6.1.18
+      - run: python -m platformio run --project-dir firmware
